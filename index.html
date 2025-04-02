@@ -4,864 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alapakam Dorababu | Python Backend Developer</title>
+    <title>Alapakam Dorababu - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #f43f5e;
-            --dark: #1e293b;
-            --dark-light: #334155;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --success: #10b981;
-
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
-            --rounded-sm: 0.25rem;
-            --rounded: 0.5rem;
-            --rounded-md: 0.75rem;
-            --rounded-lg: 1rem;
-            --rounded-full: 9999px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: #f1f5f9;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo p {
-            font-size: 0.875rem;
-            color: var(--gray);
-            margin-top: 0.25rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--dark-light);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a.active {
-            color: var(--primary);
-        }
-
-        nav a.active::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            padding: 8rem 0 6rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--rounded);
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: white;
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content Container */
-        .main-content {
-            padding: 3rem 0;
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 0;
-            scroll-margin-top: 90px;
-        }
-
-        section:not(:last-child) {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            background-color: white;
-            border-radius: var(--rounded-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--dark-light);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background-color: white;
-            border-radius: var(--rounded-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-card ul {
-            list-style: none;
-        }
-
-        .skill-card li {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--dark-light);
-        }
-
-        .skill-card i {
-            color: var(--primary);
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 4rem auto 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background-color: var(--gray);
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            width: calc(50% - 2rem);
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-right: auto;
-            padding-right: 2rem;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: auto;
-            padding-left: 2rem;
-            text-align: left;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            top: 0;
-        }
-
-        .timeline-item:nth-child(odd)::before {
-            right: -8px;
-        }
-
-        .timeline-item:nth-child(even)::before {
-            left: -8px;
-        }
-
-        .timeline-content {
-            background-color: white;
-            border-radius: var(--rounded-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .timeline-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .timeline-content p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .timeline-content ul {
-            list-style-position: inside;
-            padding-left: 1rem;
-        }
-
-        .timeline-content li {
-            margin-bottom: 0.5rem;
-            color: var(--dark-light);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background-color: white;
-            border-radius: var(--rounded-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-header h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-header p {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .project-body ul {
-            list-style-position: inside;
-            padding-left: 0;
-        }
-
-        .project-body li {
-            margin-bottom: 0.75rem;
-            color: var(--dark-light);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            background-color: white;
-            border-radius: var(--rounded-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 3rem auto 0;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-            color: var(--dark-light);
-        }
-
-        .contact-item i {
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-
-        .contact-item a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            font-size: 1.25rem;
-            transition: all 0.2s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            .hero {
-                padding: 6rem 0 4rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .section-title {
-                margin-bottom: 3rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-
-            .timeline::before {
-                left: 1rem;
-            }
-
-            .timeline-item {
-                width: calc(100% - 3rem);
-                margin-left: 3rem;
-                text-align: left;
-                padding-left: 2rem;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                margin-right: 0;
-                padding-right: 0;
-                text-align: left;
-            }
-
-            .timeline-item:nth-child(odd)::before,
-            .timeline-item:nth-child(even)::before {
-                left: -8px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-
-            .hero {
-                padding: 5rem 0 3rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-content,
-            .contact-content {
-                padding: 2rem 1.5rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .section-title h2 {
-                font-size: 1.75rem;
-            }
-        }
-    </style>
-
-
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <div class="header-container container">
-            <div class="logo">
-                <h1>Alapakam Dorababu</h1>
-                <p>Python Backend Developer</p>
-            </div>
+        <div class="container">
+            <h1>Alapakam Dorababu</h1>
+            <p>Python Backend Developer</p>
             <nav>
                 <ul>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Building Scalable Backend Solutions</h1>
-            <p>Python Backend Developer with 4+ years of experience in designing and optimizing high-performance web
-                applications and APIs.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="#projects" class="btn btn-outline">View Projects</a>
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>Professional Summary</h2>
+        <p>
+            Accomplished Python Backend Developer with 4+ years of experience in designing, developing, and optimizing
+            scalable web applications. Expertise in Django, RESTful APIs, database performance tuning, and security
+            implementations. Strong analytical and problem-solving skills, with a track record of reducing query
+            execution time by 40% and enhancing system performance by 30%. Adept at working in Agile environments,
+            collaborating with cross-functional teams, and leveraging the latest technologies to drive business growth.
+            Passionate about writing efficient, maintainable, and scalable code.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <!-- Programming Languages -->
+            <div class="skill-card">
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                <ul>
+                    <li><i class="fab fa-python"></i> Python</li>
+                    <li><i class="fas fa-database"></i> SQL</li>
+                </ul>
+            </div>
+
+            <!-- Frameworks -->
+            <div class="skill-card">
+                <h3><i class="fas fa-cogs"></i> Frameworks</h3>
+                <ul>
+                    <li><i class="fab fa-python"></i> Django</li>
+                    <li><i class="fas fa-cogs"></i> Django REST Framework (DRF)</li>
+                    <li><i class="fab fa-python"></i> Flask</li>
+                </ul>
+            </div>
+
+            <!-- Web Technologies -->
+            <div class="skill-card">
+                <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+                <ul>
+                    <li><i class="fab fa-html5"></i> HTML</li>
+                    <li><i class="fab fa-css3-alt"></i> CSS</li>
+                    <li><i class="fab fa-js"></i> JavaScript</li>
+                    <li><i class="fab fa-bootstrap"></i> Bootstrap</li>
+                    <li><i class="fas fa-sync-alt"></i> AJAX</li>
+                </ul>
+            </div>
+
+            <!-- Database Management -->
+            <div class="skill-card">
+                <h3><i class="fas fa-database"></i> Database Management</h3>
+                <ul>
+                    <li><i class="fas fa-database"></i> PostgreSQL</li>
+                    <li><i class="fas fa-database"></i> MySQL</li>
+                    <li><i class="fas fa-database"></i> Redis</li>
+                </ul>
+            </div>
+
+            <!-- Cloud & DevOps -->
+            <div class="skill-card">
+                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                <ul>
+                    <li><i class="fab fa-aws"></i> AWS (EC2, S3, RDS)</li>
+                    <li><i class="fab fa-docker"></i> Docker</li>
+                </ul>
+            </div>
+
+            <!-- Version Control -->
+            <div class="skill-card">
+                <h3><i class="fas fa-code-branch"></i> Version Control</h3>
+                <ul>
+                    <li><i class="fab fa-git"></i> Git</li>
+                    <li><i class="fab fa-github"></i> GitHub</li>
+                    <li><i class="fab fa-gitlab"></i> GitLab</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Professional Summary</h2>
-                </div>
-                <div class="about-content">
-                    <p>
-                        Accomplished Python Backend Developer with 4+ years of experience in designing, developing, and
-                        optimizing
-                        scalable web applications. Expertise in Django, RESTful APIs, database performance tuning, and
-                        security
-                        implementations. Strong analytical and problem-solving skills, with a track record of reducing
-                        query
-                        execution time by 40% and enhancing system performance by 30%. Adept at working in Agile
-                        environments,
-                        collaborating with cross-functional teams, and leveraging the latest technologies to drive
-                        business growth.
-                        Passionate about writing efficient, maintainable, and scalable code.
-                    </p>
-                </div>
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Senior Software Developer</h3>
+                <p><strong>Soulpage IT Solutions</strong> | July 2021 – Present</p>
+                <ul>
+                    <li>Led the development of high-performance Django-based web applications, reducing response times
+                        by 30%.</li>
+                    <li>Designed and implemented highly scalable RESTful APIs, handling over 1M requests daily.</li>
+                    <li>Improved database query performance, reducing latency by 40% using indexing and caching
+                        strategies.</li>
+                </ul>
             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Technical Skills</h2>
-                </div>
-                <div class="skills-grid">
-                    <!-- Programming Languages -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                        <ul>
-                            <li><i class="fab fa-python"></i> Python</li>
-                            <li><i class="fas fa-database"></i> SQL</li>
-                        </ul>
-                    </div>
-
-                    <!-- Frameworks -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-cogs"></i> Frameworks</h3>
-                        <ul>
-                            <li><i class="fab fa-python"></i> Django</li>
-                            <li><i class="fas fa-cogs"></i> Django REST Framework (DRF)</li>
-                            <li><i class="fab fa-python"></i> Flask</li>
-                        </ul>
-                    </div>
-
-                    <!-- Web Technologies -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
-                        <ul>
-                            <li><i class="fab fa-html5"></i> HTML</li>
-                            <li><i class="fab fa-css3-alt"></i> CSS</li>
-                            <li><i class="fab fa-js"></i> JavaScript</li>
-                            <li><i class="fab fa-bootstrap"></i> Bootstrap</li>
-                            <li><i class="fas fa-sync-alt"></i> AJAX</li>
-                        </ul>
-                    </div>
-
-                    <!-- Database Management -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-database"></i> Database Management</h3>
-                        <ul>
-                            <li><i class="fas fa-database"></i> PostgreSQL</li>
-                            <li><i class="fas fa-database"></i> MySQL</li>
-                            <li><i class="fas fa-database"></i> Redis</li>
-                        </ul>
-                    </div>
-
-                    <!-- Cloud & DevOps -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        <ul>
-                            <li><i class="fab fa-aws"></i> AWS (EC2, S3, RDS)</li>
-                            <li><i class="fab fa-docker"></i> Docker</li>
-                        </ul>
-                    </div>
-
-                    <!-- Version Control -->
-                    <div class="skill-card">
-                        <h3><i class="fas fa-code-branch"></i> Version Control</h3>
-                        <ul>
-                            <li><i class="fab fa-git"></i> Git</li>
-                            <li><i class="fab fa-github"></i> GitHub</li>
-                            <li><i class="fab fa-gitlab"></i> GitLab</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="timeline-item">
+                <h3>Software Developer</h3>
+                <p><strong>Infosys</strong> | Dec 2018 – Feb 2020</p>
+                <ul>
+                    <li>Engineered robust Django applications, enhancing security and performance.</li>
+                    <li>Optimized database queries, improving response time by 25% through indexing and query
+                        restructuring.</li>
+                    <li>Designed and developed dynamic web applications using Django templates and Jinja.</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section id="experience">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Work Experience</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>Senior Software Developer</h3>
-                            <p><strong>Soulpage IT Solutions</strong> | July 2021 – Present</p>
-                            <ul>
-                                <li>Led the development of high-performance Django-based web applications, reducing
-                                    response times
-                                    by 30%.</li>
-                                <li>Designed and implemented highly scalable RESTful APIs, handling over 1M requests
-                                    daily.</li>
-                                <li>Improved database query performance, reducing latency by 40% using indexing and
-                                    caching
-                                    strategies.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>Software Developer</h3>
-                            <p><strong>Infosys</strong> | Dec 2018 – Feb 2020</p>
-                            <ul>
-                                <li>Engineered robust Django applications, enhancing security and performance.</li>
-                                <li>Optimized database queries, improving response time by 25% through indexing and
-                                    query
-                                    restructuring.</li>
-                                <li>Designed and developed dynamic web applications using Django templates and Jinja.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Project Experience</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Edgar</h3>
+                <p><strong>Client:</strong> Apex | <strong>Tech Stack:</strong> Next.js, Django, AWS</p>
+                <ul>
+                    <li>Developed scalable backend services for Adobe InDesign file management, improving workflow
+                        automation.</li>
+                    <li>Designed optimized data models for structured content management, reducing processing time.</li>
+                </ul>
             </div>
-        </section>
+            <div class="project-card">
+                <h3>Medage</h3>
+                <p><strong>Client:</strong> Iatros | <strong>Tech Stack:</strong> Python, Django, REST APIs, Redis</p>
+                <ul>
+                    <li>Engineered a HIPAA-compliant healthcare platform with AI-powered voice recognition.</li>
+                    <li>Developed automated appointment scheduling and telehealth integrations.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Project Experience</h2>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Edgar</h3>
-                            <p><strong>Client:</strong> Apex | <strong>Tech Stack:</strong> Next.js, Django, AWS</p>
-                        </div>
-                        <div class="project-body">
-                            <ul>
-                                <li>Developed scalable backend services for Adobe InDesign file management, improving
-                                    workflow
-                                    automation.</li>
-                                <li>Designed optimized data models for structured content management, reducing
-                                    processing time.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Medage</h3>
-                            <p><strong>Client:</strong> Iatros | <strong>Tech Stack:</strong> Python, Django, REST APIs,
-                                Redis</p>
-                        </div>
-                        <div class="project-body">
-                            <ul>
-                                <li>Engineered a HIPAA-compliant healthcare platform with AI-powered voice recognition.
-                                </li>
-                                <li>Developed automated appointment scheduling and telehealth integrations.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Contact</h2>
-                </div>
-                <div class="contact-content">
-                    <p>Feel free to reach out if you're looking for a backend developer, have a question, or just want
-                        to connect.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:example@gmail.com">example@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 8374872123</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+        <p><strong>Phone:</strong> +91 8374872123</p>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -870,71 +172,7 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Update active link
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Highlight active navigation link based on scroll position
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Add animation to elements when they come into view
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.skill-card, .project-card, .timeline-item').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
